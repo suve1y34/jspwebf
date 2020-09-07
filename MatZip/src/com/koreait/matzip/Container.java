@@ -29,6 +29,15 @@ public class Container extends HttpServlet {
 	private void proc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String temp = mapper.nav(request);
 		
+		switch(temp) {
+		case "405":
+			temp = "/WEB-INF/view/error.jsp";
+			break;
+		case "404":
+			temp = "/WEB-INF/view/notFound.jsp";
+			break;
+		}
+		
 		request.getRequestDispatcher(temp).forward(request, response);
 	}
 }

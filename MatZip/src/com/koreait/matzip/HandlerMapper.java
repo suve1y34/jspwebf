@@ -5,27 +5,26 @@ import javax.servlet.http.HttpServletRequest;
 import com.koreait.matzip.user.UserController;
 
 public class HandlerMapper {
-	private UserController user;
+	private UserController userCon;
 	
 	public HandlerMapper() {
-		user = new UserController();
+		userCon = new UserController();
 	}
 	
 	public String nav(HttpServletRequest request) {
 		String[] uriArr = request.getRequestURI().split("/");
 		
-		if(uriArr.length < 2) {
-			return null;
+		if(uriArr.length < 3) {
+			return "405";	//error
 		}
 		
 		switch(uriArr[1]) {
-			case ViewRef.URI_USER:
-		
-				switch(uriArr[2]) {
-					case "login":
-					return user.login(request);
+		case ViewRef.URI_USER:
+			switch(uriArr[2]) {
+			case "login":
+				return userCon.login(request);
 			}
 		}	
-		return null;
+		return "404";	//NotFound
 	}
 }
