@@ -24,6 +24,8 @@ public class HandlerMapper {
 			case "login":
 				return userCon.login(request);
 			}
+			case "join":
+				return userCon.join(request);
 		}	
 		return "404";	//NotFound
 	}

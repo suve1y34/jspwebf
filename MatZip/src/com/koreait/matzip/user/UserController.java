@@ -15,4 +15,10 @@ public class UserController {
 		//내가 원하는 주소값으로 가게 함
 		//리턴값은 내가 어떤 template을 열건지..
 	}
+	
+	public String join(HttpServletRequest request) {
+		request.setAttribute(Const.TITLE, "회원가입");
+		request.setAttribute(Const.VIEW, "user/join");
+		return ViewRef.TEMP_DEFAULT;
+	}
 }
