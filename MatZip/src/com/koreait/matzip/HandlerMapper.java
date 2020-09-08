@@ -15,18 +15,25 @@ public class HandlerMapper {
 		String[] uriArr = request.getRequestURI().split("/");
 		
 		if(uriArr.length < 3) {
-			return "405";	//error
+			return "405"; //Error
 		}
 		
 		switch(uriArr[1]) {
-		case ViewRef.URI_USER:
+		case ViewRef.URI_USER:			
 			switch(uriArr[2]) {
 			case "login":
 				return userCon.login(request);
-			}
+			case "loginProc":
+				return userCon.loginProc(request);
 			case "join":
 				return userCon.join(request);
-		}	
-		return "404";	//NotFound
+			case "joinProc":
+				return userCon.joinProc(request);
+			case "ajaxIdChk":
+				return userCon.ajaxIdChk(request);
+			}		
+		} 
+		
+		return "404"; //NotFound
 	}
 }
