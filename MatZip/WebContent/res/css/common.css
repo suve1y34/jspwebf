@@ -33,9 +33,16 @@ html, body {
 
 #container > header > #headerRight {
 	flex-grow: 1;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-right: 40px;
 }
-
-a {
+#container > header > #headerRight > a {
+	font-weight: bold;
+	font-size: 1.4em;
+}
+#container > header > #headerLeft > a {
 	font-weight: bold;
 	color: blue;
 	text-decoration: none;
@@ -43,6 +50,10 @@ a {
 
 .ml10 {
 	margin-left: 10px;
+}
+
+.ml15 {
+	margin-left: 15px;
 }
 
 #container > header > #headerLeft > #headerLogout {
