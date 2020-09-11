@@ -2,7 +2,6 @@
 
 * {
 	box-sizing: border-box;
-	background-color: #00008B;
 }
 
 html, body {
@@ -51,15 +50,22 @@ html, body {
 
 .ml10 {
 	margin-left: 10px;
+	color: #F8F8FF;
+	text-decoration: none;
 }
+
 
 .ml15 {
 	margin-left: 15px;
+	color: #F8F8FF;
+	text-decoration: none;
 }
 
 #container > header > #headerLeft > #headerLogout {
-	color: blue;
+	color: white;
+	text-decoration: none;
 }
+
 
 #container > section {
 	flex-grow: 1;
@@ -106,4 +112,15 @@ html, body {
 .msg {
 	color: red;
 	font-weight: bold;
+}
+
+input[type=text] {
+	width: 200px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
 }

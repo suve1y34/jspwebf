@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <div id="sectionContainerCenter">
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=91a1adc940bfd01e9782c38f5c083003"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 	<div id="mapContainer" style="width:100%;height:100%;"></div>
 	<script>
 		const options = {
@@ -10,5 +12,11 @@
 		};
 
 		const map = new kakao.maps.Map(mapContainer, options);
+		
+		function getRestaurantList() {
+			axios.get('/restaurant/getList').then(function(res) {
+				
+			})
+		}
 	</script>
 </div>

@@ -26,10 +26,10 @@
 					</c:choose>
 				</div>
 				<div class="ml10">${loginUser.nm}님 환영합니다.</div>
-				<div class="ml10" id="headerLogout"><a href="/user/logout">로그아웃</a></div>
+				<div class="ml10" id="headerLogout"><a class="ml10" href="/user/logout">로그아웃</a></div>
 			</div>
 			<div id="headerRight">
-				<a href="/restaurant/restMap">지도</a>
+				<a class="ml15" href="/restaurant/restMap">지도</a>
 				<a class="ml15" href="/restaurant/restReg">등록</a>
 				<a class="ml15" href="/user/restFavorite">찜</a>
 			</div>
