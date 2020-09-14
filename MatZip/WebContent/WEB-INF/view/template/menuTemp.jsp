@@ -6,8 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>${title }</title>
-<style>
-</style>
+
 <link rel="stylesheet" type="text/css" href="/res/css/common.css">
 
 </head>

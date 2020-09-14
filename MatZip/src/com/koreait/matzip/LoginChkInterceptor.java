@@ -12,6 +12,7 @@ public class LoginChkInterceptor {
 				};
 		
 		boolean isLogout = SecurityUtils.isLogout(request);
+		
 		String[] targetUri = request.getRequestURI().split("/");
 		
 		if(targetUri.length < 3) {	return null;	}
@@ -26,9 +27,10 @@ public class LoginChkInterceptor {
 			return "/user/login";
 		} else {
 			if(targetUri[1].equals(ViewRef.URI_USER)) {
-				switch(targetUri[2]) {
-				case "login": case "join":
-					return "restaurant/restMap";
+				for(String uri : chkUserUriArr) {
+					if(uri.equals(targetUri[2])) {
+						return "/restaurant/restMap";
+					}
 				}
 			}
 			return null;

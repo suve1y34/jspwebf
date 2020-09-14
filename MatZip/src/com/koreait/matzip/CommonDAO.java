@@ -17,10 +17,9 @@ public class CommonDAO {
 		String sql = " SELECT i_m, cd, val FROM c_code_d WHERE i_m = ? ";
 		
 		JdbcTemplate.executeQuery(sql, new JdbcSelectInterface() {
-
 			@Override
 			public void prepared(PreparedStatement ps) throws SQLException {
-				ps.setInt(1, i_m);
+				ps.setInt(1, i_m);				
 			}
 
 			@Override
@@ -32,7 +31,6 @@ public class CommonDAO {
 					list.add(cd);
 				}
 			}
-			
 		});
 		
 		return list;

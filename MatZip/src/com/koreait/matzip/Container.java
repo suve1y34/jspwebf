@@ -36,30 +36,24 @@ public class Container extends HttpServlet {
 		if(routerCheckResult != null) {
 			response.sendRedirect(routerCheckResult);
 			return;
-		}
-		
-		boolean isLogout = SecurityUtils.isLogout(request);
-		//로그인에 따른 접속 가능여부 판단(로그인이 안 되어 있으면 접속할 수 있는 주소만 여기서 체크.. 나머지는 전부 로그인이 되어 있어야 함
-		
-		
+		}		
 		
 		String temp = mapper.nav(request); //보통 템플릿 파일명
 		
-		if(temp.indexOf("/") >= 0) {
-			String prefix = temp.substring(0, temp.indexOf("/"));
+		if(temp.indexOf(":") >= 0) {
+			String prefix = temp.substring(0, temp.indexOf(":"));
+			String value = temp.substring(temp.indexOf(":") + 1);
 			
+			System.out.println("prefix: " + prefix);
+			System.out.println("value: " + value);
 			
-			if("redirect:".equals(prefix)) {
-				String value = temp.substring(temp.indexOf("/"));
+			if("redirect".equals(prefix)) {
 				response.sendRedirect(value);
 				return;
-			} else if("ajax:".equals(prefix)) {
-				String value = temp.substring(temp.indexOf("/") + 1);
+			} else if("ajax".equals(prefix)) {
 				response.setCharacterEncoding("UTF-8");
 				response.setContentType("application/json");
-				PrintWriter out = response.getWriter();
-				
-				System.out.println("value : " + value);
+				PrintWriter out = response.getWriter();				
 				out.print(value);
 				return;
 			}
