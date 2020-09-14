@@ -8,6 +8,16 @@
 			<div>
 				<a href="/restaurant/restMod?i_rest=${data.i_rest}"><button>수정</button></a>
 				<button onclick="isDel()">삭제</button>
+				
+				<form id="recFrm" action="/restaurant/addRecMenusProc" enctype="nultipart/form-data" method="post">
+					<div><button type="button" onclick="addRecMenu()">메뉴 추가</button></div>
+					<input type="hidden" name="i_rest" value="${data.i_rest }">
+					<div id="recItem">
+						메뉴: <input type="text" name="menu_nm">
+						가격: <input type="number" name="menu_price">
+						사진: <input type="file" name="menu_pic">
+					</div>
+				</form>
 			</div>
 		</c:if>
 		<div>
@@ -21,7 +31,7 @@
 					</span>
 					
 				<div class="status_branch_none">
-					<span class="cnt_hit"></span>
+					<span class="cnt_hit">${data.cntHits }</span>
 					<span class="cnt favorite">${data.cntFavorite }</span>
 				</div>
 			</div>
@@ -44,6 +54,29 @@
 	</div>
 	
 	<script>
+		function addRecMenu() {
+			var div = document.createElement('div')
+			
+			var inputNm = document.createElement('input')
+			inputNm.setAttribute('type', "text");
+			inputNm.setAttribute('name', 'menu_nm');
+			var inputPrice = document.createElement('input')
+			inputPrice.setAttribute("type", "number");
+			inputNm.setAttribute('name', 'menu_price');
+			var inputPic = document.createElement('input')
+			inputPic.setAttribute("type", "file");
+			inputNm.setAttribute('name', 'menu_pic');
+			
+			div.append('메뉴: ')
+			div.append(inputNm)
+			div.append('가격: ')
+			div.append(inputPrice)
+			div.append('사진: ')
+			div.append(inputPic)
+			
+			recItem.append(div)
+		}
+	
 		function isDel() {
 			if(confirm('삭제 하시겠습니까?')) {
 				location.hreft = '/restaurant/restDel?i_rest=${data.i_rest}'

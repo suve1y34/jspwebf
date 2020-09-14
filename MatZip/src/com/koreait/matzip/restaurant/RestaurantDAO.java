@@ -61,7 +61,7 @@ public class RestaurantDAO {
 	
 	public RestaurantDomain selRest(RestaurantVO param) {
 		RestaurantDomain vo = new RestaurantDomain();
-		String sql = " SELECT A.nm, A.addr, A.i_user, A.hits as cntHits "
+		String sql = " SELECT A.i_rest, A.nm, A.addr, A.i_user, A.hits as cntHits "
 				+ " , B.val AS cd_category_nm, ifnull(C.cnt, 0) AS cntFavorite "
 				+ " FROM t_restaurant A "
 				+ " LEFT JOIN c_code_d B "
@@ -97,8 +97,6 @@ public class RestaurantDAO {
 			}
 
 		});
-
-
 		return vo;
 	}
 }
