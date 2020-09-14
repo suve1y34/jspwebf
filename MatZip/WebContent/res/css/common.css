@@ -115,10 +115,7 @@ html, body {
 }
 
 input[type=text] {
-	width: 200px;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
+
 }
 
 input[type=text]:focus {

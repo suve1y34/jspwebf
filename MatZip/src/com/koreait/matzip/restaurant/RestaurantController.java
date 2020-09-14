@@ -32,6 +32,18 @@ public class RestaurantController {
 		return ViewRef.TEMP_MENU_TEMP;
 	}
 	
+	public String restDetail(HttpServletRequest request) {
+		int i_rest = CommonUtils.getIntParameter("i_rest", request);
+		
+		RestaurantVO param = new RestaurantVO();
+		param.setI_rest(i_rest);
+		
+		request.setAttribute("data", service.getRest(param));
+		request.setAttribute(Const.TITLE, "상세 페이지");
+		request.setAttribute(Const.VIEW, "restaurant/restDetail");
+		return ViewRef.TEMP_MENU_TEMP;
+	}
+	
 	public String restRegProc(HttpServletRequest request) {
 		String nm = request.getParameter("nm");
 		String addr = request.getParameter("addr");
@@ -53,6 +65,8 @@ public class RestaurantController {
 
 		return "redirect:/restaurant/restMap";
 	}
+	
+
 
 	public String ajaxGetList(HttpServletRequest request) {
 		return "ajax:" + service.getRestList();

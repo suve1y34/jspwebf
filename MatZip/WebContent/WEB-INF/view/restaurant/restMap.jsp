@@ -34,10 +34,7 @@
 		getRestaurantList()
 		
 		//마커생성
-		function createMarker(item) {
-			
-//			var content = `<div class ="label"><span class="left"></span><span class="center">\${item.nm}</span><span class="right"></span></div>`
-
+		function createMarker(item) {			
 			var content = document.createElement('div')
 			content.className = 'label'
 			
@@ -53,26 +50,31 @@
 			
 			content.appendChild(leftSpan)
 			content.appendChild(centerSpan)
-			content.appendChild(rightSpan)
-			
-			var mPos = new kakao.maps.LatLng(item.lat, item.lng)
+			content.appendChild(rightSpan)			
+			//var content = `<div class ="label"><span class="left"></span><span class="center">\${item.nm}</span><span class="right"></span></div>`
+			var mPos = new kakao.maps.LatLng(item.lat, item.lng)			
 			var marker = new kakao.maps.CustomOverlay({
 			    position: mPos,
 			    content: content
-			});
-			addEvent(marker, 'click', function() {
+			});			
+			addEvent(content, 'click', function() {
 				console.log('마커 클릭: ' + item.i_rest)
+				moveToDetail(item.i_rest)
 			})
 			
 			marker.setMap(map)
 		}
 		
+		function moveToDetail(i_rest) {
+			location.href = '/restaurant/restDetail?i_rest=' + i_rest
+		}
+		
 		function addEvent(target, type, callback) {
-			if(target.addEventListener) {
-				target.addEventListener(type, callback);
-			} else {
-				target.attachEvent('on' + type, callback);
-			}
+			 if (target.addEventListener) {
+			    target.addEventListener(type, callback);
+		    } else {
+		        target.attachEvent('on' + type, callback);
+		    }
 		}
 		
 		
@@ -88,7 +90,7 @@
 			    
 			    if(map) {
 				    var moveLatLon = new kakao.maps.LatLng(startPos.coords.latitude, startPos.coords.longitude)
-				    map.panTo(moveLatLon)
+				    map.panTo(moveLatLon)			    	
 			    }
 		  });
 		  
