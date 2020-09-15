@@ -1,12 +1,16 @@
 package com.koreait.matzip.restaurant;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.koreait.matzip.CommonDAO;
 import com.koreait.matzip.CommonUtils;
 import com.koreait.matzip.Const;
+import com.koreait.matzip.FileUtils;
 import com.koreait.matzip.SecurityUtils;
 import com.koreait.matzip.ViewRef;
 import com.koreait.matzip.vo.RestaurantVO;
@@ -77,28 +81,7 @@ public class RestaurantController {
 	}
 	
 	public String addRecMenusProc(HttpServletRequest request) {
-		
-		String uploads = request.getRealPath("/assets/uploads");
-		MultipartRequest multi = null;
-		String strI_rest = null;
-		String[] menu_nmArr = null;
-		String[] menu_priceArr = null;
-		
-		try {
-			multi = new MultipartRequest(request, uploads, 5*1024*1024, "UTF-8", new DefaultFileRenamePolicy());
-			strI_rest = request.getParameter("i_rest");
-		
-			menu_nmArr = multi.getParameterValues("menu_nm");
-			menu_priceArr = multi.getParameterValues("menu_price");
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-		
-		if(menu_nmArr != null && menu_priceArr != null) {
-			for(int i=0; i<menu_nmArr.length; i++) {
-				System.out.println(i + ": " + menu_nmArr[i] + ", " + menu_priceArr[i]);
-			}
-		}
-		return "redirect:/restaurant/restDetail?";
+		int result = service.addRecMenus(request);
+		return "redirect:/restaurant/restDetail?i_rest=" + 0;
 	}
 }
