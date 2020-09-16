@@ -76,6 +76,7 @@ public class RestaurantController {
 		
 		request.setAttribute("css", new String[]{"restaurant"});		
 		request.setAttribute("recommendMenuList", service.getRecommendMenuList(i_rest));
+		request.setAttribute("menuList", service.getMenuList(i_rest));
 		request.setAttribute("data", service.getRest(param));
 		request.setAttribute(Const.TITLE, "디테일");
 		request.setAttribute(Const.VIEW, "restaurant/restDetail");
@@ -100,5 +101,12 @@ public class RestaurantController {
 		int result = service.delRecMenu(param);
 		
 		return "ajax:" + result;
+	}
+	
+	
+	
+	public String addMenusProc(HttpServletRequest request) {
+		int i_rest = service.addMenus(request);
+		return "redirect:/restaurant/restDetail?i_rest=" + i_rest;
 	}
 }
